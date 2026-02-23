@@ -1,13 +1,13 @@
 import { useState } from "react";
-import Navbar from "./component/Navbar";
-import Footer from "./component/Footer";
+// import Navbar from "./component/Navbar";
+// import Footer from "./component/Footer";
 import Home from "./component/Home";
 import Login from "./component/Login";
 import Layout from "./Layout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./component/About";
 import UploadRecipe from "./component/UploadRecipe";
-import RecipeDetails from "./component/RecipeDetails";
+// import RecipeDetails from "./component/RecipeDetails";
 import ShowRecipeDescription from "./component/ShowRecipeDescription";
 import Signup from "./component/Signup";
 import Profileimageupload from "./component/Profileimageupload";
