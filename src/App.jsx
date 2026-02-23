@@ -1,24 +1,24 @@
 import { useState } from "react";
-import Navbar from "./Component/Navbar";
-import Footer from "./Component/Footer";
-import Home from "./Component/Home";
-import Login from "./Component/Login";
+import Navbar from "./component/Navbar";
+import Footer from "./component/Footer";
+import Home from "./component/Home";
+import Login from "./component/Login";
 import Layout from "./Layout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import About from "./Component/About";
-import UploadRecipe from "./Component/UploadRecipe";
-import RecipeDetails from "./Component/RecipeDetails";
-import ShowRecipeDescription from "./Component/ShowRecipeDescription";
-import Signup from "./Component/Signup";
-import Profileimageupload from "./Component/Profileimageupload";
-import UserProfile from "./Component/UserProfile";
-import EditProfileofuser from "./Component/EditProfileofuser";
-import EditRecipeByUserAndAdmin from "./Component/EditRecipeByUserAndAdmin";
-import Adminselectallrecipe from "./Component/adminselectallrecipe";
-import Userercipeupload from "./Component/Userercipeupload";
-import CommentDashboard from "./Component/CommentDashboard";
-import Subcllection from "./Component/Subcllection";
-import Favorites from "./Component/Favourites";
+import About from "./component/About";
+import UploadRecipe from "./component/UploadRecipe";
+import RecipeDetails from "./component/RecipeDetails";
+import ShowRecipeDescription from "./component/ShowRecipeDescription";
+import Signup from "./component/Signup";
+import Profileimageupload from "./component/Profileimageupload";
+import UserProfile from "./component/UserProfile";
+import EditProfileofuser from "./component/EditProfileofuser";
+import EditRecipeByUserAndAdmin from "./component/EditRecipeByUserAndAdmin";
+import Adminselectallrecipe from "./component/adminselectallrecipe";
+import Userercipeupload from "./component/Userercipeupload";
+import CommentDashboard from "./component/CommentDashboard";
+import Subcllection from "./component/Subcllection";
+import Favorites from "./component/Favourites";
 function App() {
   return (
     <>

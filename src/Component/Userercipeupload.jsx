@@ -91,7 +91,7 @@ function Userrecipeupload() {
     <div className="admin-panel-bg" id="user-dashboard-area">
       <style>
         {`
-          /* TARGET ONLY THIS COMPONENT USING THE ID */
+          /* TARGET ONLY THIS component USING THE ID */
           #user-dashboard-area {
             background-color: #f0f2f5 !important;
             min-height: 100vh !important;
