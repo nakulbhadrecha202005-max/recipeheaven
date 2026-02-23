@@ -1,0 +1,113 @@
+/* Color Palette */
+:root {
+  --emerald-600: #059669;
+  --emerald-700: #047857;
+  --emerald-900: #064e3b;
+  --stone-50: #fafaf9;
+}
+
+body {
+  background-color: var(--stone-50);
+  font-family: 'Inter', sans-serif;
+}
+
+.main-card {
+  max-width: 1024px;
+  width: 100%;
+  margin-top: 8vw !important;
+  border-radius: 2rem !important;
+  border: none;
+}
+
+/* Sidebar Section */
+.sidebar-section {
+  background-image: url('https://images.unsplash.com/photo-1506368249639-73a05d6f6488?auto=format&fit=crop&q=80');
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(6, 78, 59, 0.7); /* emerald-900/70 */
+}
+
+.badge-new {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  padding: 0.25rem 0.75rem;
+  border-radius: 50rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.fw-extrabold { font-weight: 800; }
+.text-emerald { color: var(--emerald-600); }
+
+/* Custom Inputs */
+.custom-input {
+  background-color: #f9fafb !important;
+  border: 3px solid #6b728053 !important;
+  border-radius: 1rem !important;
+  padding: 0.75rem 1.25rem;
+  transition: all 0.2s;
+}
+
+.custom-input:focus {
+  border-color: var(--emerald-600) !important;
+  box-shadow: none !important;
+  background-color: #fff !important;
+}
+
+/* Custom Radio Buttons (Diet & Level) */
+.btn-outline-custom {
+  border: 2px solid #f3f4f6;
+  border-radius: 0.75rem;
+  color: #6b7280;
+  background: transparent;
+  transition: all 0.2s;
+}
+
+.btn-check:checked + .btn-outline-custom {
+  border-color: var(--emerald-600) !important;
+  background-color: #ecfdf5 !important;
+  color: var(--emerald-700) !important;
+}
+
+.tiny-font { font-size: 0.65rem; }
+
+/* Publish Button */
+.publish-btn {
+  background-color: #111827;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.publish-btn:hover {
+  background-color: var(--emerald-600) !important;
+  transform: translateY(-2px);
+}
+
+.publish-btn span.material-symbols-outlined {
+  transition: transform 0.2s;
+}
+
+.publish-btn:hover span.material-symbols-outlined {
+  transform: translateX(4px);
+}
+@media screen and (min-width: 220px) and (max-width: 768px){
+    .main-card {
+        margin-top: 30vw !important;
+    }
+
+    .recipecontent-section{
+        margin-top: -12vw !important;
+    }
+
+    .difficulty-time-section{
+      margin-top: -12vw !important;
+    }
+    
+}

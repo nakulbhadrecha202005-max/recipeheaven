@@ -1,0 +1,75 @@
+/* Custom Brand Variables */
+:root {
+  --brand-red: #E63946;
+  --brand-green: #2A9D8F;
+  --brand-cream: #FDFCF0;
+  --brand-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  --brand-dark: #264653;
+}
+
+#profile-card {
+  background-color: var(--brand-cream);
+  border-radius: 20px;
+  box-shadow: var(--brand-shadow);
+  padding: 2.5rem;
+  max-width: 500px;
+  margin: 5rem auto;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.avatar-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+#profile-image {
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+#profile-image:hover {
+  transform: scale(1.02);
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--brand-dark);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.readonly-input {
+  background-color: #e9ecef !important;
+  cursor: not-allowed;
+  border: 1px dashed #ccc !important;
+}
+
+.btn-brand-save {
+  background-color: var(--brand-green) !important;
+  border: none;
+  padding: 10px 25px;
+  font-weight: 500;
+  color: white;
+}
+
+.btn-brand-remove {
+  color: var(--brand-red) !important;
+  background: transparent;
+  border: 1px solid var(--brand-red);
+  font-size: 0.9rem;
+}
+
+.btn-brand-remove:hover {
+  background: var(--brand-red);
+  color: white !important;
+}
+
+.metadata-text {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}

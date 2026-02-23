@@ -1,0 +1,171 @@
+:root {
+  --brand-Lorange: #d35400;
+  --brand-Lcream: #f9f5eb;
+  --brand-Lgreen: #8b9a47;
+  --brand-Ldark: #2c3e50;
+}
+body {
+  overflow-x: hidden;
+}
+*{
+  margin: 0;
+  padding: 0;
+  
+}
+
+/* * {
+  outline: 1px solid red;
+} */
+
+
+.login-page {
+  min-height: 100vh;
+  width: 100vw;
+
+  margin-top: 5vw;
+  display: flex;
+  
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+    120deg,
+    #91e3d9 0%,
+    #ffffff 45%,
+     #db8750 100%
+  );
+}
+
+
+/* Organic Background Blobs */
+.blob {
+  position: absolute;
+  z-index: 0;
+  filter: blur(50px);
+  opacity: 0.5;
+  border-radius: 50%;
+  display: none;
+}
+.blob-1 {
+  width: 300px;
+  height: 300px;
+    display: none;
+  background: var(--brand-green);
+  bottom:50px;
+  right: 10px;
+}
+
+
+
+.blob-2 {
+  width: 300px;
+  height: 300px;
+  background: var(--brand-Lorange);
+  bottom: 50px;
+  right: 0px;
+    display: none;
+}
+
+.login-card {
+  z-index: 1;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    
+  overflow: hidden;
+  max-width: 1000px;
+}
+
+/* Banner Side */
+.side-banner {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+              url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1000&q=80');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+
+.banner-content {
+  padding: 50px;
+
+}
+
+/* Typography & Brand */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  color: var(--brand-Lorange);
+}
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.text-brand { color: var(--brand-Lorange); }
+
+
+/* Inputs */
+.custom-input-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  
+  color: var(--brand-Ldark);
+}
+.form-control {
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 2px solid #eee;
+  transition: all 0.3s ease;
+}
+.form-control:focus {
+  border-color: var(--brand-Lorange);
+  box-shadow: 0 0 0 4px rgba(211, 84, 0, 0.1);
+}
+
+/* Button */
+.btn-brand {
+  background-color: var(--brand-Lorange);
+  color: white;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-brand:hover {
+  background-color: #b34700;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(211, 84, 0, 0.2);
+}
+
+/* Animations */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Fix */
+@media (max-width: 991px) {
+  .login-card { border-radius: 20px; width: 100%; }
+  .blob-1 { width: 80px; height: 80px; top: 20px; left: 10px; } /* Adjust size and position to make visible on mobile */
+  .blob-2 { width: 200px; height: 200px; right: -50px; } /* Reduce size and adjust position */
+}
+
+/* Desktop Fix */
+@media (min-width: 992px) {
+  .blob-1 { top: 20px; left: 20px; } /* Adjust position to make visible on desktop/laptop */
+}
+
+

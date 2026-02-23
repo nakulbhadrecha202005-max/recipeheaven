@@ -1,0 +1,230 @@
+/* style.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.comment-section {
+    width: 80%;
+    margin: 30px auto; /* Centers the section on the page */
+    max-width: 800px;
+}
+
+/* --- Comment Form Styling --- */
+.comment-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical; /* Allows vertical resizing */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Main Container */
+#commentsContainer {
+  width: 100% !important;
+  max-width: 650px !important;
+  margin: 30px auto !important;
+  padding: 20px !important;
+  background: linear-gradient(135deg, #f8fafc, #eef3f9) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08) !important;
+}
+
+/* Remove bullets */
+#commentList {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+/* Container & Global Font */
+.comment-container {
+  max-width: 100%;
+  padding: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Individual Row */
+.comment-wrapper {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px; /* Tight spacing like IG */
+  align-items: flex-start;
+}
+
+/* Compact Proportional Avatar */
+.comment-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid rgba(0,0,0,0.05); /* Subtle definition */
+}
+
+/* Content Area */
+.comment-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 85%; /* Prevents bubbles from touching the right edge on mobile */
+}
+
+/* The Message Bubble */
+.comment-bubble {
+  background-color: #f0f2f5; /* Standard FB/Messenger Light Gray */
+  padding: 8px 12px;
+  border-radius: 16px;
+  transition: background-color 0.2s ease;
+}
+
+/* Subtle hover effect without movement */
+.comment-bubble:hover {
+  background-color: #e4e6eb;
+}
+
+/* Name and Date on one line */
+.comment-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.comment-username {
+  font-size: 13px;
+  font-weight: 600;
+  color: #050505;
+}
+
+.comment-date {
+  font-size: 11px;
+  color: #65676b;
+  font-weight: 400;
+}
+
+/* The Message Text */
+.comment-message {
+  font-size: 14px;
+  color: #050505;
+  line-height: 1.4;
+  margin: 0;
+  word-wrap: break-word;
+  white-space: pre-wrap; /* Preserves line breaks in user messages */
+}
+
+/* Desktop sizing */
+@media (min-width: 768px) {
+  .comment-content {
+    max-width: 70%;
+  }
+}
+
+#commentsTitle{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;   
+}
+
+.comment-form {
+  max-width: 100%;
+  margin-top: 24px;
+  padding: 16px;
+  background: #ffffff;
+  border-top: 1px solid #ebedf0; /* Separates form from the feed */
+}
+
+.form-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1c1e21;
+  margin-bottom: 12px;
+  letter-spacing: -0.2px;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.comment-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dddfe2;
+  border-radius: 8px;
+  background-color: #f5f6f7;
+  font-size: 14px;
+  font-family: inherit;
+  resize: none; /* Keeps the UI clean and consistent */
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* Social Media Style Focus */
+.comment-textarea:focus {
+  outline: none;
+  background-color: #ffffff;
+  border-color: #1877f2; /* Professional blue focus */
+  box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+}
+
+.form-footer {
+  display: flex;
+  justify-content: flex-end; /* Aligns button to the right like IG */
+}
+
+.submit-btn {
+  background-color: #064e3b; /* Keeping your green but refined */
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s active;
+}
+
+.submit-btn:hover {
+  background-color: #043d2e;
+}
+
+.submit-btn:active {
+  transform: scale(0.97); /* Subtle tactile feedback */
+}
+
+/* Responsive adjustment */
+@media (max-width: 480px) {
+  .comment-form {
+    padding: 12px 8px;
+  }
+  .submit-btn {
+    width: 100%; /* Full width button is easier to tap on phones */
+  }
+}
+
+.form-title{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;   
+    
+}
