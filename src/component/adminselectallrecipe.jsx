@@ -22,6 +22,7 @@ function Adminselectallrecipe() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (
+        currentUser &&
         currentUser.displayName === "nakulbhadrecha" &&
         currentUser.email === "nakulbhadrecha9@gmail.com"
       ) {
