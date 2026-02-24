@@ -88,12 +88,18 @@ export default function Comments({ recipeId }) {
         "comments", // subcollection
       );
 
+      const defaultPhotoURL =
+        "https://cdn-icons-png.flaticon.com/512/17561/17561717.png";
+
       await addDoc(commentsRef, {
         message: Message,
         userName: currentUser.displayName,
         email: currentUser.email,
         userId: currentUser.uid,
-        photoURL: currentUser.photoURL,
+        photoURL:
+          currentUser.photoURL && currentUser.photoURL.trim() !== ""
+            ? currentUser.photoURL
+            : defaultPhotoURL,
         createdAt: serverTimestamp(),
       });
 
@@ -143,7 +149,14 @@ export default function Comments({ recipeId }) {
           {comments.map((comment) => (
             <div className="comment-wrapper" key={comment.id}>
               <img
-                src={Userimages}
+                src={
+                  Userimages ||
+                  "https://cdn-icons-png.flaticon.com/512/17561/17561717.png"
+                }
+                onError={(e) => {
+                  e.currentTarget.src =
+                    "https://cdn-icons-png.flaticon.com/512/17561/17561717.png";
+                }}
                 className="comment-avatar"
                 alt="user avatar"
               />
