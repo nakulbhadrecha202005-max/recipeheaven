@@ -1,20 +1,16 @@
 import React, { useState } from "react";
 import "../Styles/Navbarstyle.css";
-import ShinyText from "../Reactbiits/Shinytext";
-import { Link } from "react-router-dom";
-
-//logout logic of code
-import { useNavigate } from "react-router-dom";
+import ShinyText from "../Reactbiits/ShinyText";
+import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../context/Firebase";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  // 1. Create a state to track if menu is open
   const [isOpen, setIsOpen] = useState(false);
   const [recipeDropdownOpen, setRecipeDropdownOpen] = useState(false);
   const [AccountDropdownOpen, setAccountDropdownOpen] = useState(false);
-  // 2. Toggle function
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -25,7 +21,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg  py-3 ">
+    <nav className="navbar navbar-expand-lg py-3">
       <div className="container">
         <a className="navbar-brand fs-3 fw-bold" href="#">
           <ShinyText
@@ -43,7 +39,6 @@ export default function Navbar() {
           <span className="text-danger">.</span>
         </a>
 
-        {/* 3. Update button to use toggleMenu and conditional icons */}
         <button
           className="navbar-toggler border-0 shadow-none"
           type="button"
@@ -55,11 +50,7 @@ export default function Navbar() {
           </span>
         </button>
 
-        {/* 4. Use conditional class 'show' for the collapse div */}
-        <div
-          className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}
-          id="mainNav"
-        >
+        <div className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}>
           <ul className="navbar-nav mx-auto">
             <li className="nav-item">
               <Link
@@ -70,6 +61,7 @@ export default function Navbar() {
                 Home
               </Link>
             </li>
+
             <li className="nav-item">
               <Link
                 className="nav-link"
@@ -79,6 +71,8 @@ export default function Navbar() {
                 About Us
               </Link>
             </li>
+
+            {/* Recipes Dropdown */}
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
@@ -88,9 +82,6 @@ export default function Navbar() {
                   setRecipeDropdownOpen(!recipeDropdownOpen);
                   setAccountDropdownOpen(false);
                 }}
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
               >
                 Recipes
               </a>
@@ -99,70 +90,37 @@ export default function Navbar() {
                 className={`dropdown-menu ${recipeDropdownOpen ? "show" : ""}`}
               >
                 <li>
-                  <Link
-                    className="dropdown-item"
-                    to="/adminselectallrecipes"
-                    onClick={() => {
-                      setRecipeDropdownOpen(false);
-                      setIsOpen(false);
-                    }}
-                  >
+                  <Link className="dropdown-item" to="/adminselectallrecipes">
                     Admin panel
                   </Link>
                 </li>
 
                 <li>
-                  <Link
-                    className="dropdown-item"
-                    to="/Userercipeupload"
-                    onClick={() => {
-                      setRecipeDropdownOpen(false);
-                      setIsOpen(false);
-                    }}
-                  >
-                    Users Uploaded Recipies
+                  <Link className="dropdown-item" to="/Userercipeupload">
+                    Users Uploaded Recipes
                   </Link>
                 </li>
 
                 <li>
-                  <Link
-                    className="dropdown-item"
-                    to="/CommentDashboard"
-                    onClick={() => {
-                      setRecipeDropdownOpen(false);
-                      setIsOpen(false);
-                    }}
-                  >
+                  <Link className="dropdown-item" to="/CommentDashboard">
                     Comments Dashboard
                   </Link>
                 </li>
 
                 <li>
-                  <Link
-                    className="dropdown-item"
-                    to="/uploadrecipe"
-                    onClick={() => {
-                      setRecipeDropdownOpen(false);
-                      setIsOpen(false);
-                    }}
-                  >
+                  <Link className="dropdown-item" to="/uploadrecipe">
                     Add Recipe
                   </Link>
                 </li>
+
                 <li>
-                  <Link
-                    className="dropdown-item"
-                    to="/favorites"
-                    onClick={() => {
-                      setRecipeDropdownOpen(false);
-                      setIsOpen(false);
-                    }}
-                  >
-                    Your fav. recipies
+                  <Link className="dropdown-item" to="/favorites">
+                    Your fav. recipes
                   </Link>
                 </li>
               </ul>
             </li>
+
             {/* Account Dropdown */}
             <li className="nav-item dropdown">
               <a
@@ -173,9 +131,6 @@ export default function Navbar() {
                   setRecipeDropdownOpen(false);
                   setAccountDropdownOpen(!AccountDropdownOpen);
                 }}
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
               >
                 Account Details
               </a>
@@ -184,77 +139,34 @@ export default function Navbar() {
                 className={`dropdown-menu ${AccountDropdownOpen ? "show" : ""}`}
               >
                 <li>
-                  <Link
-                    className="dropdown-item"
-                    to="/login"
-                    onClick={() => {
-                      setAccountDropdownOpen(false);
-                      setIsOpen(false);
-                    }}
-                  >
+                  <Link className="dropdown-item" to="/login">
                     Login
                   </Link>
                 </li>
 
-                {/* signup */}
                 <li>
-                  <Link
-                    className="dropdown-item"
-                    to="/signup"
-                    onClick={() => {
-                      setAccountDropdownOpen(false);
-                      setIsOpen(false);
-                    }}
-                  >
+                  <Link className="dropdown-item" to="/signup">
                     Signup
                   </Link>
                 </li>
-                {/* <li>
-                  <Link
-                    className="dropdown-item"
-                    to="/Profileimageupload"
-                    onClick={() => {
-                      setAccountDropdownOpen(false);
-                      setIsOpen(false);
-                    }}
-                  >
-                    Profile image upload
-                  </Link>
-                </li> */}
+
                 <li>
-                  <Link
-                    className="dropdown-item"
-                    to="/editProfileofuser"
-                    onClick={() => {
-                      setAccountDropdownOpen(false);
-                      setIsOpen(false);
-                    }}
-                  >
+                  <Link className="dropdown-item" to="/editProfileofuser">
                     Edit Profile
                   </Link>
                 </li>
               </ul>
             </li>
+
             <li className="nav-item">
-              <Link
-                className="nav-link"
-                to="/login"
-                onClick={() => {
-                  setIsOpen(false);
-                }}
-              >
+              <Link className="nav-link" to="/login">
                 Login
               </Link>
             </li>
           </ul>
+
           <div className="d-flex align-items-center gap-3 mt-lg-0 mt-4">
-            <Link
-              className="nav-link"
-              to="/favorites"
-              onClick={() => {
-                setIsOpen(false);
-              }}
-            >
+            <Link className="nav-link" to="/favorites">
               <span className="material-icons-outlined text-danger clickable">
                 favorite_border
               </span>
@@ -262,7 +174,7 @@ export default function Navbar() {
 
             <button
               className="btn btn-outline-danger btn-sm rounded-pill px-4 text-light"
-              onClick={() => logout()}
+              onClick={logout}
             >
               Sign Out
             </button>
