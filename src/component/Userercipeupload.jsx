@@ -21,7 +21,7 @@ function Userrecipeupload() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser && currentUser.email) {
-        setUser(currentUser.displayName || "Chef");
+        setUser(currentUser.displayName);
       } else {
         setUser(null);
         setError("Unauthorized access. Redirecting...");
@@ -34,25 +34,30 @@ function Userrecipeupload() {
   }, [navigator]);
 
   async function fetchData_ofsearch(searchQuery = "") {
-    setLoadingfor_username(true);
-    const reference_of_collection = collection(db, "recipyuploadby_user");
-    let q = query(reference_of_collection);
+    if (auth.currentUser && auth.currentUser.email) {
+      setLoadingfor_username(true);
+      const reference_of_collection = collection(db, "recipyuploadby_user");
+      let q = query(reference_of_collection);
 
-    if (searchQuery.trim() !== "") {
-      q = query(
-        reference_of_collection,
-        where("Recipetitle", ">=", searchQuery),
-        where("Recipetitle", "<=", searchQuery + "\uf8ff"),
-      );
+      if (searchQuery.trim() !== "") {
+        q = query(
+          reference_of_collection,
+          where("Recipetitle", ">=", searchQuery),
+          where("Recipetitle", "<=", searchQuery + "\uf8ff"),
+        );
+      }
+
+      const querySnapshot = await getDocs(q);
+      const list_ofsearchitem = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      setData(list_ofsearchitem);
+      setLoadingfor_username(false);
+    } else {
+      navigator("/home");
     }
-
-    const querySnapshot = await getDocs(q);
-    const list_ofsearchitem = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-
-    setData(list_ofsearchitem);
     setLoadingfor_username(false);
   }
 
