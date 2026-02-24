@@ -1,6 +1,6 @@
 import React from "react";
 import "../Styles/Footerstyle.css"; // Ensure this path is correct
-import ShinyText from "../Reactbiits/Shinytext";
+import ShinyText from "../Reactbiits/ShinyText";
 export default function Footer() {
   return (
     <footer>
