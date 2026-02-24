@@ -4,13 +4,17 @@ import ShinyText from "../Reactbiits/ShinyText";
 import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../context/Firebase";
+import { useEffect } from "react";
+
+import { onAuthStateChanged } from "firebase/auth";
 
 export default function Navbar() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [recipeDropdownOpen, setRecipeDropdownOpen] = useState(false);
   const [AccountDropdownOpen, setAccountDropdownOpen] = useState(false);
-
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -19,6 +23,23 @@ export default function Navbar() {
     await signOut(auth);
     navigate("/login");
   };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        console.log("User logged in:", currentUser.email);
+        setUser(currentUser);
+      } else {
+        console.log("User logged out");
+        setUser(null);
+      }
+      setLoading(false);
+    });
+
+    return () => unsubscribe(); // cleanup
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <nav className="navbar navbar-expand-lg py-3">
@@ -172,12 +193,14 @@ export default function Navbar() {
               </span>
             </Link>
 
-            <button
-              className="btn btn-outline-danger btn-sm rounded-pill px-4 text-light"
-              onClick={logout}
-            >
-              Sign Out
-            </button>
+            {auth.currentUser ? (
+              <button
+                className="btn btn-outline-danger btn-sm rounded-pill px-4 text-light"
+                onClick={logout}
+              >
+                Sign Out
+              </button>
+            ) : null}
           </div>
         </div>
       </div>

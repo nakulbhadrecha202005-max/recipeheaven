@@ -34,30 +34,28 @@ function Userrecipeupload() {
   }, [navigator]);
 
   async function fetchData_ofsearch(searchQuery = "") {
-    if (auth.currentUser && auth.currentUser.email) {
-      setLoadingfor_username(true);
-      const reference_of_collection = collection(db, "recipyuploadby_user");
-      let q = query(reference_of_collection);
+    setLoadingfor_username(true);
+    const userEmail = auth.currentUser.email;
+    const reference_of_collection = collection(db, "recipyuploadby_user");
+    let q = query(reference_of_collection);
 
-      if (searchQuery.trim() !== "") {
-        q = query(
-          reference_of_collection,
-          where("Recipetitle", ">=", searchQuery),
-          where("Recipetitle", "<=", searchQuery + "\uf8ff"),
-        );
-      }
-
-      const querySnapshot = await getDocs(q);
-      const list_ofsearchitem = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-
-      setData(list_ofsearchitem);
-      setLoadingfor_username(false);
-    } else {
-      navigator("/home");
+    if (searchQuery.trim() !== "") {
+      q = query(
+        reference_of_collection,
+        where("email", "==", userEmail),
+        where("Recipetitle", ">=", searchQuery),
+        where("Recipetitle", "<=", searchQuery + "\uf8ff"),
+      );
     }
+
+    const querySnapshot = await getDocs(q);
+    const list_ofsearchitem = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    setData(list_ofsearchitem);
+    setLoadingfor_username(false);
     setLoadingfor_username(false);
   }
 

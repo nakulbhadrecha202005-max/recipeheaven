@@ -83,12 +83,14 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import "../Styles/profilepicupload.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { auth } from "../context/Firebase";
 import { updateProfile } from "firebase/auth";
 
 const ProfileImageUpload = () => {
+  const navigate = useNavigate();
+
   const [image, setImage] = useState(
     "https://cdn-icons-png.flaticon.com/512/17561/17561717.png",
   );
@@ -151,6 +153,7 @@ const ProfileImageUpload = () => {
       await updateProfile(user, { photoURL: imageUrl });
 
       setSuccessMessage("Profile image added successfully!");
+      navigate("/login");
     }
   };
 
@@ -221,7 +224,7 @@ const ProfileImageUpload = () => {
               >
                 Remove Photo
               </button>
-              <Link to="/home" className="btn-remove-profile">
+              <Link to="/login" className="btn-remove-profile">
                 Skip For Now
               </Link>
             </div>
