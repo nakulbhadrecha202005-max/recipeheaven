@@ -16,6 +16,8 @@ function Userrecipeupload() {
   const [user, setUser] = useState(null);
   const [Error, setError] = useState("");
 
+  const [dataLoading, setDataLoading] = useState(false);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser && currentUser.email) {
@@ -25,6 +27,7 @@ function Userrecipeupload() {
         setError("Unauthorized access. Redirecting...");
         navigator("/home");
       }
+
       setLoadingfor_username(false);
     });
     return () => unsubscribe();
@@ -431,12 +434,11 @@ function Userrecipeupload() {
                 >
                   Edit Recipe
                 </Link>
-                <button
-                  className="btn-delete-action"
-                  onClick={() => deleterecipes(item.id)}
-                >
-                  <i className="bi bi-trash3"></i>
-                </button>
+                {item.updatedBy === auth.currentUser.email && (
+                  <button onClick={() => deleterecipes(recipe.id)}>
+                    Delete
+                  </button>
+                )}
               </div>
             </div>
           ))}
