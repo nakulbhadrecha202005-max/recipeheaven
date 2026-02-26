@@ -21,7 +21,7 @@ function Userrecipeupload() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser && currentUser.email) {
-        setUser(currentUser.displayName);
+        setUser(currentUser.email);
       } else {
         setUser(null);
         setError("Unauthorized access. Redirecting...");
@@ -36,8 +36,9 @@ function Userrecipeupload() {
   async function fetchData_ofsearch(searchQuery = "") {
     setLoadingfor_username(true);
     const userEmail = auth.currentUser.email;
+    console.log(userEmail);
     const reference_of_collection = collection(db, "recipyuploadby_user");
-    let q = query(reference_of_collection);
+    let q;
 
     if (searchQuery.trim() !== "") {
       q = query(
@@ -46,6 +47,8 @@ function Userrecipeupload() {
         where("Recipetitle", ">=", searchQuery),
         where("Recipetitle", "<=", searchQuery + "\uf8ff"),
       );
+    } else {
+      q = query(reference_of_collection, where("email", "==", userEmail));
     }
 
     const querySnapshot = await getDocs(q);
@@ -75,8 +78,10 @@ function Userrecipeupload() {
   }
 
   useEffect(() => {
-    fetchData_ofsearch("");
-  }, []);
+    if (user) {
+      fetchData_ofsearch("");
+    }
+  }, [user]);
 
   if (loadingfor_username) {
     return (
@@ -437,11 +442,13 @@ function Userrecipeupload() {
                 >
                   Edit Recipe
                 </Link>
-                {item.updatedBy === auth.currentUser.email && (
-                  <button onClick={() => deleterecipes(recipe.id)}>
-                    Delete
-                  </button>
-                )}
+
+                <button
+                  className="btn btn-outline-danger"
+                  onClick={() => deleterecipes(item.id)}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))}

@@ -150,7 +150,7 @@ export default function Comments({ recipeId }) {
             <div className="comment-wrapper" key={comment.id}>
               <img
                 src={
-                  Userimages ||
+                  comment?.photoURL ||
                   "https://cdn-icons-png.flaticon.com/512/17561/17561717.png"
                 }
                 onError={(e) => {

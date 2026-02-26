@@ -116,7 +116,7 @@ const ShowRecipeDescription = () => {
             <div className="rdp-chef-info">
               <img
                 src={
-                  data.photoURL ||
+                  data.photoprofileOf_user ||
                   "https://cdn-icons-png.flaticon.com/512/17561/17561717.png"
                 }
                 alt="Chef"
