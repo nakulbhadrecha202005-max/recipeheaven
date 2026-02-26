@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Adminselectallrecipe from "./adminselectallrecipe";
 import { onSnapshot, doc, setDoc, deleteDoc } from "firebase/firestore";
 import { auth } from "../context/Firebase";
+import { div } from "motion/react-client";
 const Home = () => {
   const navigate = useNavigate();
 
@@ -153,6 +154,13 @@ const Home = () => {
         <div className="container" style={{ marginTop: "10vh" }}>
           <div className="row align-items-center text-center text-lg-start">
             <div className="col-lg-7">
+              <div className="text-secondary">
+                {auth.currentUser && (
+                  <div className="text-secondary">
+                    Hello {auth.currentUser.displayName || ""} !
+                  </div>
+                )}
+              </div>
               <h1
                 className="display-4 fw-bold mb-4"
                 style={{ letterSpacing: "-1.5px" }}
